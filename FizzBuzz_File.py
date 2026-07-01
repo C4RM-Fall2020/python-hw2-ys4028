@@ -1,5 +1,12 @@
 import numpy as np
 
 def FizzBuzz(start, finish):
-    v = ['buzz', 41, 'fizz', 43, 44, 'fizzbuzz']
-    return(v)
+    numbers = np.arange(start, finish + 1)
+
+    result = numbers.astype(object)
+
+    result = np.where((numbers % 3 == 0) & (numbers % 5 == 0), 'fizzbuzz', result)
+    result = np.where((numbers % 3 == 0) & (numbers % 5 != 0), 'fizz', result)
+    result = np.where((numbers % 5 == 0) & (numbers % 3 != 0), 'buzz', result)
+
+    return result.tolist()
